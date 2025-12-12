@@ -27,6 +27,9 @@ Diferente de planilhas estáticas, este dashboard oferece uma interface dinâmic
     - Indicadores visuais de performance (gradiente de cores).
 - **Tratamento de Dados:** Normalização automática de texto (remoção de acentos e padronização) para evitar duplicidade de registros.
 - **Sistema de Edição:** Interface tabular para correção de registros lançados erroneamente.
+- **Controle de Acesso (RBAC):** Sistema de segurança com níveis de permissão.
+    - **Modo Visitante:** Acesso público apenas para visualização dos dashboards (Leitura).
+    - **Modo Admin:** Acesso protegido por senha para inserção e edição de dados (Escrita).
 
 ## 🛠️ Tecnologias Utilizadas
 
