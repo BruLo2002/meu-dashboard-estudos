@@ -166,7 +166,7 @@ if is_admin and tab_reg:
 # --- ABA 3: EDITAR (SÓ ADMIN) ---
 if is_admin and tab_edit:
     with tab_edit:
-        st.header("Editar Base")
+        st.header("Editar Banco")
         if not df.empty:
             df_edit = st.data_editor(df, num_rows="dynamic")
             if st.button("Salvar Edições na Nuvem"):
