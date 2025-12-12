@@ -8,6 +8,34 @@ from oauth2client.service_account import ServiceAccountCredentials
 # --- CONFIGURAÇÃO INICIAL ---
 st.set_page_config(page_title="Dashboard Concursos", layout="wide")
 
+# --- BLOCO DE SEGURANÇA (O Porteiro) ---
+def check_password():
+    """Retorna True se o usuário digitar a senha correta."""
+    # Se a senha ainda não foi verificada, marca como Falso
+    if "password_correct" not in st.session_state:
+        st.session_state.password_correct = False
+
+    # Se já acertou antes, libera o acesso
+    if st.session_state.password_correct:
+        return True
+
+    # Se não, mostra a caixa de senha
+    st.markdown("### 🔒 Acesso Restrito")
+    password = st.text_input("Digite a senha de acesso:", type="password")
+    
+    if password:
+        # Verifica se a senha bate com a que está nos segredos (.streamlit/secrets.toml)
+        if password == st.secrets["senha_acesso"]:
+            st.session_state.password_correct = True
+            st.rerun() # Recarrega a página para liberar o conteúdo
+        else:
+            st.error("Senha incorreta!")
+    return False
+
+# Chama a função. Se retornar False (senha errada), o app para de carregar aqui.
+if not check_password():
+    st.stop()
+
 # Lista fixa de disciplinas
 DISCIPLINAS = [
     "Português", "Matemática", "Raciocínio Lógico", 
